@@ -1,3 +1,5 @@
+package HomeWork_1;
+
 public class HW_2 {
     private static int sum (int a, int b, int c, int d) {
         a = 7;

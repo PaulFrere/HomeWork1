@@ -1,3 +1,5 @@
+package HomeWork_1;
+
 public class HW_7 {
     public static void main(String[] args) {
         int a = 1986;

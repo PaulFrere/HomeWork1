@@ -1,3 +1,5 @@
+package HomeWork_1;
+
 public class HW_3 {
     private static boolean sum (int a, int b){
         a = 4;

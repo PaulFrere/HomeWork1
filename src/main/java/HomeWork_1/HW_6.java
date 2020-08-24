@@ -1,3 +1,5 @@
+package HomeWork_1;
+
 public class HW_6 {
     public static void main(String[] args) {
         String name = "Sergey";

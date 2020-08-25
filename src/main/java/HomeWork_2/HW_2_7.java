@@ -1,34 +1,48 @@
 package HomeWork_2;
 
+import java.util.Arrays;
+
 public class HW_2_7 {
     public static void main(String[] args) {
-        int n = -4;
-        int[] df = {4, 8, 5, 3, 1, 1, 2, 6, 5, 9, 7, 3, 1};
-        if (n >= 0) {
-            for (int i : df) {
-                if ((i + n) < df.length) {
-                    i = i + n;
-                    System.out.print(df[i] + " ");
-                    i = i - n;
-                } else {
-                    i = i + n - (df.length - 1);
-                    System.out.print(df[i] + " ");
-                    i = i - n + (df.length - 1);
-                }
-            }
+        shiftArray(new int[] {1, 2, 3, 4, 5}, 0);
+        shiftArray(new int[] {1, 2, 3, 4, 5}, 1);
+        shiftArray(new int[] {1, 2, 3, 4, 5}, 2);
+        shiftArray(new int[] {1, 2, 3, 4, 5}, 5);
+        shiftArray(new int[] {1, 2, 3, 4, 5}, 6);
+        shiftArray(new int[] {1, 2, 3, 4, 5}, -1);
+        shiftArray(new int[] {1, 2, 3, 4, 5}, -2);
+        shiftArray(new int[] {1, 2, 3, 4, 5}, -5);
+        shiftArray(new int[] {1, 2, 3, 4, 5}, -6);
+    }
+
+    private static void shiftArray(int[] array, int n) {
+        int shiftNumber = n % array.length;
+        if (shiftNumber < 0) {
+            shiftLeft(array, Math.abs(shiftNumber));
         }
-        if (n < 0) {
-            for (int j = df.length - 1; j > 0; j--) {
-                if ((j + n) >= 0) {
-                    j = j + n;
-                    System.out.print(df[j] + " ");
-                    j = j - n;
-                } else {
-                    j = j + n + (df.length + n - 1);
-                    System.out.print(df[j] + " ");
-                    j = j - n - (df.length + n - 1);
-                }
+        else {
+            shiftRight(array, shiftNumber);
+        }
+        System.out.println(Arrays.toString(array) + "; shiftNumber = " + n);
+    }
+
+    private static void shiftRight(int[] array, int n) {
+        for (int i = 0; i < n; i++) {
+            int lastValue = array[array.length - 1];
+            for (int j = array.length - 1; j > 0; j--) {
+                array[j] = array[j - 1];
             }
+            array[0] = lastValue;
+        }
+    }
+
+    private static void shiftLeft(int[] array, int n) {
+        for (int i = 0; i < n; i++) {
+            int firstValue = array[0];
+            for (int j = 0; j < array.length - 1; j++) {
+                array[j] = array[j + 1];
+            }
+            array[array.length - 1] = firstValue;
         }
     }
 }
